@@ -8,12 +8,35 @@
   <body>
     <header>
       <h1>BG3 Class Keeper</h1>
-      <form action="/" method="POST">
+      <form action="/spin" method="post">
         <label for="log-in">Enter Username</label>
-        <input type="text" id="log-in" name="log-in" />
-        <button type="submit">Log In</button>
-        <button type="submit">Sign Up</button>
+        <input type="text" id="log-in" name="input_user"/>
+        <label for="sign-up">Enter Password</label>
+        <input type="password" id="sign-up" name="input_pass"/>
+        <div id="button-container">
+            <button type="submit" name="log_in">Log In</button>
+            <button type="submit" name="sign_up">Sign Up</button>
+        </div>
       </form>
     </header>
+    <main>
+        <table>
+            <h2>List of Classes</h2>
+            <ul>
+                <li>Barbarian</li>
+                <li>Bard</li>
+                <li>Cleric</li>
+                <li>Druid</li>
+                <li>Fighter</li>
+                <li>Monk</li>
+                <li>Paladin</li>
+                <li>Ranger</li>
+                <li>Rogue</li>
+                <li>Sorcerer</li>
+                <li>Warlock</li>
+                <li>Wizard</li>
+            </ul>
+        <table>
+    </main>
   </body>
 </html>
