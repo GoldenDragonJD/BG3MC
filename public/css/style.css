@@ -22,7 +22,7 @@ header>h1 {
     border: 2px solid white;
 }
 
-header>#log-in-form {
+header>form {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -35,18 +35,18 @@ header>#log-in-form {
     font-weight: 300;
 }
 
-header>#log-in-form>label {
+header>form>label {
     font-size: 20px;
     display: flex;
     margin: 0;
     align-items: center;
 }
 
-header>#log-in-form>input {
+header>form>input {
     font-size: 20px;
 }
 
-header>#log-in-form>button {
+header>form>button {
     font-size: 20px;
     border-radius: 5px;
     background-color: red;
@@ -55,7 +55,7 @@ header>#log-in-form>button {
     transition: color 0.2s ease-in-out;
 }
 
-header>#log-in-form>button:hover {
+header>form>button:hover {
     background-color: rgb(255, 242, 0);
     color: black;
 }
