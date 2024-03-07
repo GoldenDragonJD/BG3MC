@@ -31,6 +31,6 @@ app.post("/", (req, res) => {
   });
 });
 
-const listener = app.listen(process.env.PORT || 12345, () => {
+const listener = app.listen(process.env.PORT || 3000, () => {
   console.log(listener.address().port);
 });
