@@ -1,0 +1,72 @@
+#Barbarian {
+    background-color: #A52A2A;
+    color: #FFFFFF;
+}
+
+/* Brown background with white text */
+#Bard {
+    background-color: #800080;
+    color: #FFFFFF;
+}
+
+/* Purple background with white text */
+#Cleric {
+    background-color: #FFD700;
+    color: #000000;
+}
+
+/* Gold background with black text */
+#Druid {
+    background-color: #228B22;
+    color: #FFFFFF;
+}
+
+/* Forest Green background with white text */
+#Fighter {
+    background-color: #808080;
+    color: #FFFFFF;
+}
+
+/* Grey background with white text */
+#Monk {
+    background-color: #FFA500;
+    color: #000000;
+}
+
+/* Orange background with black text */
+#Paladin {
+    background-color: #ADD8E6;
+    color: #000000;
+}
+
+/* Light Blue background with black text */
+#Ranger {
+    background-color: #008000;
+    color: #FFFFFF;
+}
+
+/* Green background with white text */
+#Rogue {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+/* Black background with white text */
+#Sorcerer {
+    background-color: #4B0082;
+    color: #FFFFFF;
+}
+
+/* Indigo background with white text */
+#Warlock {
+    background-color: #800000;
+    color: #FFFFFF;
+}
+
+/* Maroon background with white text */
+#Wizard {
+    background-color: #0000FF;
+    color: #FFFFFF;
+}
+
+/* Blue background with white text */

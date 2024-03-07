@@ -3,41 +3,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/back-ground-colors.css">
     <title>Bg3 Class Keeper</title>
   </head>
   <body>
     <header>
       <h1>BG3 Class Keeper</h1>
-      <form action="/spin" method="post">
+      <form action="/" method="post">
         <label for="log-in">Enter Username</label>
-        <input type="text" name="user"/>
+        <input type="text" name="user" minlength="3" required />
         <label for="sign-up">Enter Password</label>
-        <input type="password" name="pass"/>
-        <input type="hidden" id="action" name="action" value="log_in"/>
+        <input type="password" name="pass" minlength="3" required />
+        <input type="hidden" id="action" name="action" value="log_in" />
         <div id="button-container">
-            <button type="submit" onclick="document.getElementById('action').value = 'log_in'">Log In</button>
-            <button type="submit" onclick="document.getElementById('action').value = 'sign_up'">Sign Up</button>
+          <button
+            type="submit"
+            onclick="document.getElementById('action').value = 'log_in'"
+          >
+            Log In
+          </button>
+          <button
+            type="submit"
+            onclick="document.getElementById('action').value = 'sign_up'"
+          >
+            Sign Up
+          </button>
         </div>
       </form>
     </header>
     <main>
-        <table>
-            <h2>List of Classes</h2>
-            <ul>
-                <li>Barbarian</li>
-                <li>Bard</li>
-                <li>Cleric</li>
-                <li>Druid</li>
-                <li>Fighter</li>
-                <li>Monk</li>
-                <li>Paladin</li>
-                <li>Ranger</li>
-                <li>Rogue</li>
-                <li>Sorcerer</li>
-                <li>Warlock</li>
-                <li>Wizard</li>
-            </ul>
-        <table>
+      <div id="class-list-container">
+        <h2>Class List</h2>
+        <ul>
+          <li class="class-item" id="Barbarian">Barbarian</li>
+          <li class="class-item" id="Bard">Bard</li>
+          <li class="class-item" id="Cleric">Cleric</li>
+          <li class="class-item" id="Druid">Druid</li>
+          <li class="class-item" id="Fighter">Fighter</li>
+          <li class="class-item" id="Monk">Monk</li>
+          <li class="class-item" id="Paladin">Paladin</li>
+          <li class="class-item" id="Ranger">Ranger</li>
+          <li class="class-item" id="Rogue">Rogue</li>
+          <li class="class-item" id="Sorcerer">Sorcerer</li>
+          <li class="class-item" id="Warlock">Warlock</li>
+          <li class="class-item" id="Wizard">Wizard</li>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

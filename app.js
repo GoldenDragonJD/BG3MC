@@ -11,9 +11,14 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.post("/spin", (req, res) => {
+app.get("/next", (req, res) => {
+  res.send("Login Successful!");
+});
+
+app.post("/", (req, res) => {
   if (req.body.action === "log_in") {
     console.log("Log In");
+    res.redirect("/next");
   } else if (req.body.action === "sign_up") {
     console.log("Sign Up");
   }
