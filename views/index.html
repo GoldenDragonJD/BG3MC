@@ -10,12 +10,13 @@
       <h1>BG3 Class Keeper</h1>
       <form action="/spin" method="post">
         <label for="log-in">Enter Username</label>
-        <input type="text" id="log-in" name="input_user"/>
+        <input type="text" name="user"/>
         <label for="sign-up">Enter Password</label>
-        <input type="password" id="sign-up" name="input_pass"/>
+        <input type="password" name="pass"/>
+        <input type="hidden" id="action" name="action" value="log_in"/>
         <div id="button-container">
-            <button type="submit" name="log_in">Log In</button>
-            <button type="submit" name="sign_up">Sign Up</button>
+            <button type="submit" onclick="document.getElementById('action').value = 'log_in'">Log In</button>
+            <button type="submit" onclick="document.getElementById('action').value = 'sign_up'">Sign Up</button>
         </div>
       </form>
     </header>
