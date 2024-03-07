@@ -1,10 +1,13 @@
 const express = require('express');
 const mongo = require("mongoose");
 const sha256 = require("js-sha256");
+const exp = require("constants");
 
 const app = express();
 
 app.use("/public/css", express.static(__dirname + "/public/css"));
+app.use("/public/Images", express.static(__dirname + "/public/Images"));
+app.use("/public/Fonts", express.static(__dirname + "/public/Fonts"));
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {

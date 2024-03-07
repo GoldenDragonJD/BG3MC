@@ -1,3 +1,8 @@
+/* import font from /public/Fonts/SHERWOOD.ttf */
+@font-face {
+  font-family: "SHERWOOD.TTF";
+  src: url("/public/Fonts/SHERWOOD.TTF") format("truetype");
+}
 body {
   background-color: rgb(26, 26, 26);
   color: white;
@@ -22,14 +27,14 @@ header {
 
 header > h1 {
   font-size: 50px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: bold;
+  font-family: "SHERWOOD.TTF", sans-serif;
+  font-weight: 500;
   background-color: black;
   padding: 15px;
   border-radius: 10px;
   border: 2px solid white;
   margin: 0 auto;
-cursor: default;
+  cursor: default;
 }
 
 header > form {
@@ -74,53 +79,64 @@ header > form > button:hover {
 }
 
 main {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 
-main>#class-list-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    width: 200px;
-    height: 100%;
+main > #class-list-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 100%;
 }
 
-main>#class-list-container>h2 {
-    font-size: 30px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    font-weight: 500;
-    cursor: default;
+main > #class-list-container > h2 {
+  font-size: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  cursor: default;
 }
 
-main>#class-list-container>ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    cursor: default;
-    width: 95%;
+main > #class-list-container > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+  width: 95%;
 }
 
-main>#class-list-container>ul>li {
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    font-weight: 700;
-    cursor: default;
+main > #class-list-container > ul > li {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  cursor: default;
 }
 
 .class-item {
-    border-radius: 10px;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: default;
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+#image-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+#image-container > img {
+  width: 448px;
+  height: 256px;
+  margin: 0 auto;
 }
