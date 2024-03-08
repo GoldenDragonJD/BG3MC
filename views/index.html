@@ -85,5 +85,17 @@
         </div>
       </div>
     </main>
+
+    <script>
+      fetch("/error").then((res) => {
+        res.json().then((data) => {
+          if (data.message === "User Already Exists!") {
+            alert("Username Already Exists!");
+          } else if (data.message === "Incorrect Username or Password!") {
+            alert("Incorrect Username or Password!");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

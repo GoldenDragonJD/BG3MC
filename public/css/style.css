@@ -3,6 +3,10 @@
   font-family: "SHERWOOD.TTF";
   src: url("/public/Fonts/SHERWOOD.TTF") format("truetype");
 }
+
+:root {
+  
+}
 body {
   background-color: rgb(26, 26, 26);
   color: white;
@@ -202,7 +206,7 @@ main > h1 {
 }
 
 #image-container > .image-info > h2 {
-  font-size: 200%;
+  font-size: 300%;
   font-family: "SHERWOOD.TTF", sans-serif;
   font-weight: 500;
   cursor: default;
