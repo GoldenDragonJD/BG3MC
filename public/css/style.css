@@ -173,8 +173,8 @@ background-color: black;
 }
 #image-container>.image-info {
     position: relative;
-    width: 896px;
-    height: 512px;
+    width: 20%;
+    height: 20%;
     margin: 0 auto;
     cursor: default;
     border-radius: 10px;
@@ -194,7 +194,7 @@ background-color: black;
   }
   
   #image-container>.image-info>h2 {
-    font-size: 100px;
+    font-size: 80px;
     font-family: "SHERWOOD.TTF", sans-serif;
     font-weight: 500;
     cursor: default;
