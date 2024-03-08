@@ -1,13 +1,41 @@
 const express = require('express');
-const mongo = require("mongoose");
+const mongoose = require("mongoose");
 const sha256 = require("js-sha256");
-const exp = require("constants");
+require("dotenv").config();
 
 const app = express();
 
-app.use("/public/css", express.static(__dirname + "/public/css"));
-app.use("/public/Images", express.static(__dirname + "/public/Images"));
-app.use("/public/Fonts", express.static(__dirname + "/public/Fonts"));
+mongoose.connect(process.env.MONGO_URI);
+
+const db = mongoose.connection;
+db.on("error", () => {
+  console.error("Connection to database Failed!");
+  app.get("/", (req, res) => {
+    res.statusCode = 500;
+    res.send("Connection to database Failed!");
+  });
+});
+
+db.once("open", () => {
+  console.log("Connection to database Successful!");
+});
+
+db.on("close", () => {
+  console.log("Connection to database Closed!");
+  app.get("/", (req, res) => {
+    res.statusCode = 500;
+    res.send("Connection to database Closed!");
+  });
+});
+
+const User = mongoose.model("User", new mongoose.Schema({
+  username: String,
+  password: String,
+  level: Number,
+  classes: [String],
+}));
+
+app.use("/public", express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
@@ -23,12 +51,15 @@ app.post("/", (req, res) => {
     console.log("Log In");
     res.redirect("/next");
   } else if (req.body.action === "sign_up") {
-    console.log("Sign Up");
+    const user = new User({
+      username: `${req.body.user}`,
+      password: `${sha256(req.body.pass)}`,
+      level: 0,
+      classes: [],
+    })
+    user.save();
+    res.redirect("/next");
   }
-  res.json({
-    username: `${req.body.user}`,
-    password: `${sha256(req.body.pass)}`,
-  });
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
