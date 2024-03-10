@@ -50,8 +50,8 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/next", async (req, res) => {
-  if (!req.query.token) req.query.token = "nopass";
+app.get("/home", async (req, res) => {
+  if (!req.query.token) req.query.token = "noPass";
   User.find({ username: req.query.username }).then(async (user) => {
     if (await bcrypt.compare(token, req.query.token)) {
       res.json(user);

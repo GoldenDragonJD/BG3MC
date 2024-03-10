@@ -20,7 +20,7 @@ window.document
       .then((data) => {
         if (data.message !== "Success") return alert(data.message);
         window.location.href =
-          "/next?username=" +
+          "/home?username=" +
           encodeURIComponent(username) +
           "&token=" +
           encodeURIComponent(data.token);
@@ -46,7 +46,7 @@ document.querySelector("#login-form").addEventListener("submit", (action) => {
     response.json().then((data) => {
       if (data.message !== "Success") return alert(data.message);
       window.location.href =
-        "/next?username=" +
+        "/home?username=" +
         encodeURIComponent(username) +
         "&token=" +
         encodeURIComponent(data.token);
