@@ -1,4 +1,4 @@
-document
+window.document
   .querySelector("#register-form")
   .addEventListener("submit", (action) => {
     action.preventDefault();
@@ -19,7 +19,11 @@ document
       .then((response) => response.json())
       .then((data) => {
         if (data.message !== "Success") return alert(data.message);
-        window.location.href = "/next?username=" + encodeURIComponent(username);
+        window.location.href =
+          "/next?username=" +
+          encodeURIComponent(username) +
+          "&token=" +
+          encodeURIComponent(data.token);
       });
   });
 
@@ -41,7 +45,11 @@ document.querySelector("#login-form").addEventListener("submit", (action) => {
   }).then((response) =>
     response.json().then((data) => {
       if (data.message !== "Success") return alert(data.message);
-      window.location.href = "/next?username=" + encodeURIComponent(username);
+      window.location.href =
+        "/next?username=" +
+        encodeURIComponent(username) +
+        "&token=" +
+        encodeURIComponent(data.token);
     })
   );
 });

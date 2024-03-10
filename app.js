@@ -2,11 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
+const sha256 = require("js-sha256");
+const { Batch } = require("mongodb");
 require("dotenv").config();
 
 const app = express();
 
 mongoose.connect(process.env.MONGO_URI);
+
+const token = sha256("token66").toString();
 
 const db = mongoose.connection;
 db.on("error", () => {
@@ -46,9 +50,11 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/next", (req, res) => {
-  User.find({ username: req.query.username }).then((user) => {
-    res.json(user);
+app.get("/next", async (req, res) => {
+  User.find({ username: req.query.username }).then(async (user) => {
+    if (await bcrypt.compare(token, req.query.token)) {
+      res.json(user);
+    } else res.redirect("/");
   });
 });
 
@@ -65,9 +71,10 @@ app.post("/register", async (req, res) => {
       password: hashedPassword,
       character: [],
     });
+    const hashedToken = await bcrypt.hash(token, 10);
 
     newUser.save();
-    res.json({ message: "Success" });
+    res.json({ message: "Success", token: hashedToken });
   });
 });
 
@@ -77,9 +84,10 @@ app.post("/login", async (req, res) => {
 
   User.findOne({ username: username }).then(async (user) => {
     if (!user) return res.json({ message: "Username does not exist!" });
-    if (await bcrypt.compare(password, user.password))
-      res.json({ message: "Success" });
-    else res.json({ message: "Incorrect password try again!" });
+    if (await bcrypt.compare(password, user.password)) {
+      const hashedToken = await bcrypt.hash(token, 10);
+      res.json({ message: "Success", token: hashedToken });
+    } else res.json({ message: "Incorrect password try again!" });
   });
 });
 
