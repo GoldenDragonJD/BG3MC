@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/next", async (req, res) => {
+  if (!req.query.token) req.query.token = "nopass";
   User.find({ username: req.query.username }).then(async (user) => {
     if (await bcrypt.compare(token, req.query.token)) {
       res.json(user);
