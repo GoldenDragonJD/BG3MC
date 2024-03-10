@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const sha256 = require("js-sha256");
-const { Batch } = require("mongodb");
 require("dotenv").config();
 
 const app = express();
@@ -52,9 +51,9 @@ app.get("/", (req, res) => {
 
 app.get("/home", async (req, res) => {
   if (!req.query.token) req.query.token = "noPass";
-  User.find({ username: req.query.username }).then(async (user) => {
-    if (await bcrypt.compare(token, req.query.token)) {
-      res.json(user);
+  User.findOne({ username: req.query.username }).then(async (user) => {
+    if (sha256(user.password).toString() === req.query.token) {
+      res.sendFile(__dirname + "/views/home.html");
     } else res.redirect("/");
   });
 });
@@ -72,10 +71,10 @@ app.post("/register", async (req, res) => {
       password: hashedPassword,
       character: [],
     });
-    const hashedToken = await bcrypt.hash(token, 10);
+    const createToken = sha256(newUser.password).toString();
 
     newUser.save();
-    res.json({ message: "Success", token: hashedToken });
+    res.json({ message: "Success", token: createToken });
   });
 });
 
@@ -86,8 +85,8 @@ app.post("/login", async (req, res) => {
   User.findOne({ username: username }).then(async (user) => {
     if (!user) return res.json({ message: "Username does not exist!" });
     if (await bcrypt.compare(password, user.password)) {
-      const hashedToken = await bcrypt.hash(token, 10);
-      res.json({ message: "Success", token: hashedToken });
+      const createToken = sha256(user.password).toString();
+      res.json({ message: "Success", token: createToken });
     } else res.json({ message: "Incorrect password try again!" });
   });
 });
