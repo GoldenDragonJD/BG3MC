@@ -77,9 +77,9 @@ app.post("/login", async (req, res) => {
 
   User.findOne({ username: username }).then(async (user) => {
     if (!user) return res.json({ message: "Username does not exist!" });
-    if (await !bcrypt.compare(password, user.password))
-      return { message: "Incorrect password try again!" };
-    res.json({ message: "Success" });
+    if (await bcrypt.compare(password, user.password))
+      res.json({ message: "Success" });
+    else res.json({ message: "Incorrect password try again!" });
   });
 });
 
