@@ -4,9 +4,6 @@
   src: url("/public/Fonts/SHERWOOD.TTF") format("truetype");
 }
 
-:root {
-  
-}
 body {
   background-color: rgb(26, 26, 26);
   color: white;
@@ -14,10 +11,11 @@ body {
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 40px;
   width: 100%;
-  height: 200px;
+  height: fit-content;
   align-items: center;
   background-image: linear-gradient(
     to right,
@@ -30,65 +28,121 @@ header {
 }
 
 header > h1 {
-  font-size: 50px;
+  font-size: 80px;
   font-family: "SHERWOOD.TTF", sans-serif;
   font-weight: 500;
-  background-color: black;
+  /* background-color: black; */
   padding: 15px;
   border-radius: 10px;
-  border: 2px solid white;
-  margin: 0 auto;
-  cursor: default;
-}
-
-header > form {
-  display: flex;
-  gap: 5px;
-  background-color: rgb(169, 28, 28);
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid black;
-  font-family: "SHERWOOD.TTF", sans-serif;
-  font-weight: 100;
-  flex-direction: column;
-}
-
-header > form > label {
-  font-size: 20px;
-  display: flex;
+  /* border: 2px solid white; */
   margin: 0;
-  align-items: center;
+  cursor: default;
+  /* box-shadow: 0px 13px 12px rgb(0, 0, 0); */
+  -webkit-text-stroke: 3px black;
+  margin: 20px 0;
+  text-align: center;
 }
 
-header > form > input {
-  font-size: 20px;
-}
-
-header > form > #button-container > button {
-  font-size: 20px;
-  border-radius: 5px;
-  background-color: rgb(255, 0, 0);
-  color: white;
-  transition: background-color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-  width: 48%;
-  flex-wrap: wrap;
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.906);
-  cursor: pointer;
-  transition: box-shadow 0.2s ease-in-out;
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(149, 17, 17);
+  border-radius: 10px;
   font-family: "SHERWOOD.TTF", sans-serif;
-  font-weight: 100;
+  font-weight: 200;
+  border: 4px solid black;
+  margin: 10px 0;
+  margin-right: 5px;
+  padding: 10px;
+  padding-top: 0;
 }
 
-header > form > #button-container > button:active {
-  box-shadow: none;
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 48%;
+  padding: 10px;
 }
 
-header > form > button:hover {
-  background-color: rgb(255, 242, 0);
-  border: 2px solid white;
-  color: black;
+#register-form {
+  display: none;
+}
+
+.entry-form > h2 {
+  font-size: 30px;
+  font-weight: bold;
+  cursor: default;
+  margin: 0;
+  margin-top: 5px;
+  text-align: center;
+  padding: 0;
+  height: fit-content;
+}
+
+.entry-form> .action-containers {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 400px;
+}
+
+.entry-form> .input-fields > label {
+  font-size: 15px;
+  cursor: default;
+  margin: 0;
+  margin-top: 5px;
+  text-align: left;
+  padding: 0;
+}
+
+.info-input {
+  font-size: 23px;
+  cursor: default;
+  margin: 0;
+  margin-top: 0px;
+  text-align: left;
+  padding: 3px;
+  border-radius: 3px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+}
+
+.input-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  flex-direction: column;
+  width: 48%;
+  gap: 5px;
+}
+
+.input-buttons {
+  font-family: "SHERWOOD.TTF", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  background-color: rgb(255, 38, 0);
+  border-radius: 4px;
+  border: 2px solid black;
+  padding: 3px;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+  width: 100%;
+}
+
+.input-buttons:hover {
+  background-color: rgb(255, 247, 0);
+  box-shadow: 0px 0px 10px rgb(21, 21, 21);
+  transition: all 0.1s linear;
+}
+
+.input-buttons:active {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 0px rgb(21, 21, 21);
 }
 
 main {

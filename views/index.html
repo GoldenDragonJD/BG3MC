@@ -4,29 +4,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Bg3 Class Keeper</title>
+
+    <script>
+      function openRegister() {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("register-form").style.display = "flex";
+      }
+
+      function openLogin() {
+        document.getElementById("login-form").style.display = "flex";
+        document.getElementById("register-form").style.display = "none";
+      }
+    </script>
   </head>
   <body>
     <header>
       <h1>BG3 Class Keeper</h1>
-      <form action="/" method="post">
-        <label for="log-in">Enter Username</label>
-        <input type="text" name="user" minlength="3" required />
-        <label for="sign-up">Enter Password</label>
-        <input type="password" name="pass" minlength="3" required />
-        <input type="hidden" id="action" name="action" value="log_in" />
-        <div id="button-container">
-          <button
-            type="submit"
-            onclick="document.getElementById('action').value = 'log_in'"
-          >
-            Log In
-          </button>
-          <button
-            type="submit"
-            onclick="document.getElementById('action').value = 'sign_up'"
-          >
-            Sign Up
-          </button>
+      <form id="login-form" class="entry-form">
+        <h2>Login</h2>
+        <div class="action-containers">
+          <div class="input-fields">
+            <label for="username-login">Enter Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username-login"
+              class="info-input"
+              minlength="3"
+              autocomplete="username"
+              required
+            />
+            <label for="password-login">Enter Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password-login"
+              class="info-input"
+              minlength="3"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <div class="input-buttons-container">
+            <input type="submit" value="Enter" class="input-buttons" />
+            <button
+              type="button"
+              id="sign-up"
+              onclick="openRegister()"
+              class="input-buttons"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
+      <form id="register-form" class="entry-form">
+        <h2>Register</h2>
+        <div class="action-containers">
+          <div class="input-fields">
+            <label for="username-register">Enter Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username-register"
+              class="info-input"
+              minlength="3"
+              required
+            />
+            <label for="password-register">Enter Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password-register"
+              class="info-input"
+              minlength="3"
+              required
+            />
+          </div>
+          <div class="input-buttons-container">
+            <input type="submit" value="Register" class="input-buttons" />
+            <button
+              type="button"
+              id="log-in"
+              onclick="openLogin()"
+              class="input-buttons"
+            >
+              Login
+            </button>
+          </div>
         </div>
       </form>
     </header>
@@ -86,16 +151,6 @@
       </div>
     </main>
 
-    <script>
-      fetch("/error").then((res) => {
-        res.json().then((data) => {
-          if (data.message === "User Already Exists!") {
-            alert("Username Already Exists!");
-          } else if (data.message === "Incorrect Username or Password!") {
-            alert("Incorrect Username or Password!");
-          }
-        });
-      });
-    </script>
+    <script src="/public/Scripts/authAccount.js"></script>
   </body>
 </html>

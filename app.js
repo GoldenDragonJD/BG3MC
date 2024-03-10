@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const sha256 = require("js-sha256");
+const bcrypt = require("bcrypt");
+const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const app = express();
@@ -33,64 +34,53 @@ const User = mongoose.model(
   new mongoose.Schema({
     username: String,
     password: String,
-    level: Number,
-    classes: [String],
+    character: [Object],
   })
 );
 
 app.use("/public", express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
 app.get("/next", (req, res) => {
-  res.send("Login Successful!");
+  User.find({ username: req.query.username }).then((user) => {
+    res.json(user);
+  });
 });
 
-app.post("/", (req, res) => {
-  if (req.body.action === "log_in") {
-    User.find({ username: req.body.user }).then((data) => {
-      if (data.length === 0) {
-        res.redirect("/");
-        console.log("Incorrect Username or Password!");
-        app.get("/error", (req, res) => {
-          res.json({ message: "Incorrect Username or Password!" });
-        });
-      }
-      if (data.length === 1) {
-        if (data[0].password === sha256(req.body.pass)) {
-          res.redirect("/next");
-        } else {
-          res.redirect("/");
-          console.log("Incorrect Username or Password!");
-          app.get("/error", (req, res) => {
-            res.json({ message: "Incorrect Username or Password!" });
-          });
-        }
-      }
+app.post("/register", async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findOne({ username: username }).then(async (user) => {
+    if (user) return res.json({ message: "Username is taken!" });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      username: username,
+      password: hashedPassword,
+      character: [],
     });
-  } else if (req.body.action === "sign_up") {
-    const user = new User({
-      username: `${req.body.user}`,
-      password: `${sha256(req.body.pass)}`,
-      level: 0,
-      classes: [],
-    });
-    User.find({ username: req.body.user }).then((data) => {
-      if (data.length == 0) {
-        user.save();
-        res.redirect("/next");
-      } else {
-        res.redirect("/");
-        console.log("User Already Exists!");
-        app.get("/error", (req, res) => {
-          res.json({ message: "User Already Exists!" });
-        });
-      }
-    });
-  }
+
+    newUser.save();
+    res.json({ message: "Success" });
+  });
+});
+
+app.post("/login", async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findOne({ username: username }).then(async (user) => {
+    if (!user) return res.json({ message: "Username does not exist!" });
+    if (await !bcrypt.compare(password, user.password))
+      return { message: "Incorrect password try again!" };
+    res.json({ message: "Success" });
+  });
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
