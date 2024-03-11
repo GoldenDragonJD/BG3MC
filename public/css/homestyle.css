@@ -55,6 +55,8 @@ header > #header-info > a {
   text-decoration: none;
   color: white;
   background-color: rgb(50, 15, 82);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 500;
   padding: 7px;
   border-radius: 5px;
   border: 2px solid yellow;
@@ -81,6 +83,7 @@ main {
   margin-top: 10px;
   height: 80%;
   width: 100%;
+  gap: 5px;
 }
 
 main > #character-selector {
@@ -94,14 +97,19 @@ main > #character-selector {
   background-color: black;
   border-radius: 10px;
   color: white;
-  font-family: "SHERWOOD.TTF", sans-serif;
-  font-weight: 300;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
   font-size: 20px;
-  padding: 10px;
+  padding: 0 5px;
+  text-align: center;
 }
 
 main > #character-selector > h2 {
   font-size: 30px;
+  padding: 10px;
+  border: 3px solid #0e0e0e;
+  background-color: #272727;
+  border-radius: 10px;
 }
 
 main > #character-selector > ul {
@@ -141,8 +149,8 @@ main > #character-selector > ul > li {
   height: 50px;
   background-color: rgb(0, 0, 0);
   color: limegreen;
-  font-family: "SHERWOOD.TTF", sans-serif;
-  font-weight: 300;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
   font-size: 20px;
   text-align: center;
   transition: all 0.4s ease-in-out;
@@ -167,4 +175,93 @@ main > #character-selector > ul > li {
 #add-character {
   font-size: xx-large;
   font-weight: bolder;
+}
+
+#character-creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color:#0e0e0e;
+  border-radius: 10px;
+  border: 4px solid black;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+#character-creator > h1 {
+  font-size: 70px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+#character-creator > .line-break {
+  width: 80%;
+  height: 3px;
+  background-color: lime;
+  border-radius: 50%;
+}
+
+#character-creator > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  height: 100%;
+  font-size: 25px;
+  margin-top: 30px;
+}
+
+#name-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  height: 150px;
+  font-size: 40px;
+  border: 2px solid black;
+  padding: 10px;
+  background-color: black;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+#name-input:focus-within {
+    box-shadow: 0px 0px 50px -10px rgba(50, 205, 50, 0.486);
+    border: 2px solid limegreen;
+}
+
+#name-input > label {
+  color: limegreen;
+}
+
+#name-input > input {
+  all: unset;
+  width: 100%;
+  height: fit-content;
+  background-color: grey;
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  transition: outline border 0.1s ease-in-out;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+#name-input > input:focus {
+    outline: 1px solid limegreen;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: none;
+}
+
+#name-input > input::placeholder {
+  color: rgba(255, 255, 255, 0.576);
 }

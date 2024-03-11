@@ -9,3 +9,9 @@ function toggleButton(button) {
   button.classList.remove("select-character");
   button.classList.add("selected");
 }
+
+userInfo.then((data) => {
+  if (data.character.length === 0) {
+    toggleButton(document.querySelector("#add-character"));
+  }
+});

@@ -6,7 +6,7 @@
 
 body {
   background-color: #191918;
-  color: #FFA046;
+  color: #ffa046;
 }
 
 header {
@@ -71,9 +71,10 @@ header > h1 {
   text-align: center;
   padding: 0;
   height: fit-content;
+  color: white;
 }
 
-.entry-form> .action-containers {
+.entry-form > .action-containers {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -82,7 +83,7 @@ header > h1 {
   width: 400px;
 }
 
-.entry-form> .input-fields > label {
+.entry-form > .input-fields > label {
   font-size: 15px;
   cursor: default;
   margin: 0;
@@ -92,15 +93,21 @@ header > h1 {
 }
 
 .info-input {
+  all: unset;
   font-size: 23px;
-  cursor: default;
+  cursor: text;
   margin: 0;
   margin-top: 0px;
   text-align: left;
+  background-color: white;
   padding: 3px;
   border-radius: 3px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
+}
+
+.info-input:focus {
+  outline: 2px solid rgb(0, 0, 0);
 }
 
 .input-buttons-container {
@@ -117,7 +124,7 @@ header > h1 {
   font-family: "SHERWOOD.TTF", sans-serif;
   font-weight: 200;
   font-size: 20px;
-  background-color: rgb(255, 38, 0);
+  background-color: #ffa046;
   border-radius: 4px;
   border: 2px solid black;
   padding: 3px;
@@ -127,7 +134,7 @@ header > h1 {
 }
 
 .input-buttons:hover {
-  background-color: rgb(255, 247, 0);
+  background-color: lime;
   box-shadow: 0px 0px 10px rgb(21, 21, 21);
   transition: all 0.1s linear;
 }
@@ -135,6 +142,22 @@ header > h1 {
 .input-buttons:active {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 0px rgb(21, 21, 21);
+}
+
+#log-in {
+  background-color: rgb(255, 38, 0);
+}
+
+#log-in:hover {
+  background-color: rgb(255, 247, 0);
+}
+
+#sign-up {
+  background-color: rgb(255, 38, 0);
+}
+
+#sign-up:hover {
+  background-color: rgb(255, 247, 0);
 }
 
 main {
