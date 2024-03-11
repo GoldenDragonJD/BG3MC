@@ -5,8 +5,8 @@
 }
 
 body {
-  background-color: rgb(26, 26, 26);
-  color: white;
+  background-color: #191918;
+  color: #FFA046;
 }
 
 header {
@@ -17,27 +17,19 @@ header {
   width: 100%;
   height: fit-content;
   align-items: center;
-  background-image: linear-gradient(
-    to right,
-    rgb(255, 0, 0),
-    rgb(255, 165, 0),
-    rgb(255, 140, 0)
-  );
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  background-color: #0e0e0e;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
 }
 
 header > h1 {
   font-size: 80px;
   font-family: "SHERWOOD.TTF", sans-serif;
   font-weight: 500;
-  /* background-color: black; */
   padding: 15px;
   border-radius: 10px;
-  /* border: 2px solid white; */
   margin: 0;
   cursor: default;
-  /* box-shadow: 0px 13px 12px rgb(0, 0, 0); */
   -webkit-text-stroke: 3px black;
   margin: 20px 0;
   text-align: center;
@@ -229,6 +221,7 @@ main > h1 {
   margin: 20px auto;
   cursor: default;
   text-align: center;
+  color: white;
 }
 #image-container > .image-info {
   position: relative;
@@ -270,6 +263,7 @@ main > h1 {
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.5s;
+  color: white;
 }
 
 #image-container > .image-info:hover > h2 {

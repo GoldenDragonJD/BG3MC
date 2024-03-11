@@ -1,19 +1,68 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
     <script src="/public/Scripts/grapUserInfo.js"></script>
-    <link rel="stylesheet" href="/public/css/homestyle.css">
-</head>
-<body>
+    <script src="/public/Scripts/toggleButtons.js"></script>
+    <link rel="stylesheet" href="/public/css/homestyle.css" />
+  </head>
+  <body>
     <header>
-        <h1>Welcome to the BG3 Multi-Class Challenge</h1>
-        <div id="header-info">
-            <a href="/">Log Off</a>
-            <h2>Logged in as: <span class="username-display">:Username:</span></h2>
-        </div>
+      <h1>Welcome to the BG3 Multi-Class Challenge</h1>
+      <div id="header-info">
+        <a href="/">Log Off</a>
+        <h2>Logged in as: <span class="username-display">:Username:</span></h2>
+      </div>
     </header>
+    <main>
+      <div id="character-selector">
+        <h2>Select Your Character</h2>
+        <ul>
+          <li>
+            <input
+              onclick="toggleButton(this)"
+              class="select-character select-button"
+              type="button"
+              value="Juan"
+            />
+          </li>
+          <li>
+            <input
+              onclick="toggleButton(this)"
+              class="select-character select-button"
+              type="button"
+              value="Hector"
+            />
+          </li>
+          <li>
+            <input
+              onclick="toggleButton(this)"
+              class="select-character select-button"
+              type="button"
+              value="Morgan"
+            />
+          </li>
+          <li>
+            <input
+              onclick="toggleButton(this)"
+              class="select-character select-button"
+              type="button"
+              value="Cory"
+            />
+          </li>
+          <li>
+            <input
+              onclick="toggleButton(this)"
+              class="select-character select-button"
+              id="add-character"
+              type="button"
+              value="+"
+            />
+          </li>
+        </ul>
+      </div>
+    </main>
     <script src="/public/Scripts/DisplayInfo.js"></script>
-</body>
+  </body>
 </html>
