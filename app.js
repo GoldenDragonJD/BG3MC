@@ -98,6 +98,9 @@ app.post("/grabAccountInfo", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
+  if (!username) return res.redirect("/");
+  if (!password) return res.redirect("/");
+
   User.findOne({ username: username }).then((user) => {
     if (password !== sha256(user.password)) return res.redirect("/");
     res.json(user);
