@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
 app.get("/home", async (req, res) => {
   if (!req.query.token) req.query.token = "noPass";
   User.findOne({ username: req.query.username }).then((user) => {
+    if (!user) return res.redirect("/");
     if (sha256(user.password).toString() === req.query.token) {
       res.sendFile(__dirname + "/views/home.html");
     } else res.redirect("/");
