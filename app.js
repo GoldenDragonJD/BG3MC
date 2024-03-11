@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
 
 app.get("/home", async (req, res) => {
   if (!req.query.token) req.query.token = "noPass";
-  User.findOne({ username: req.query.username }).then(async (user) => {
+  User.findOne({ username: req.query.username }).then((user) => {
     if (sha256(user.password).toString() === req.query.token) {
       res.sendFile(__dirname + "/views/home.html");
     } else res.redirect("/");
@@ -61,6 +61,9 @@ app.get("/home", async (req, res) => {
 app.post("/register", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
+
+  if (!username) return res.redirect("/");
+  if (!password) return res.redirect("/");
 
   User.findOne({ username: username }).then(async (user) => {
     if (user) return res.json({ message: "Username is taken!" });
@@ -88,6 +91,16 @@ app.post("/login", async (req, res) => {
       const createToken = sha256(user.password).toString();
       res.json({ message: "Success", token: createToken });
     } else res.json({ message: "Incorrect password try again!" });
+  });
+});
+
+app.post("/grabAccountInfo", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findOne({ username: username }).then((user) => {
+    if (password !== sha256(user.password)) return res.redirect("/");
+    res.json(user);
   });
 });
 
