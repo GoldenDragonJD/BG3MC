@@ -8,8 +8,11 @@ function toggleButton(button) {
   });
   button.classList.remove("select-character");
   button.classList.add("selected");
-  if (button.id === "add-character")
+  if (button.id === "add-character") {
     document.getElementById("character-creator").style.display = "flex";
+  } else {
+    document.getElementById("character-creator").style.display = "none";
+  }
 }
 
 userInfo.then((data) => {

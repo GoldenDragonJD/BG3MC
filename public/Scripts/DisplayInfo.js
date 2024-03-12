@@ -4,6 +4,24 @@ userInfo.then((data) => {
   for (let element of userNameElements) {
     element.innerHTML = data.username;
   }
+
+  const characters = Object.values(data.characters);
+  const listElement = document.getElementById("character-list");
+  if (!characters) return;
+
+  for (let character of characters) {
+    const listObj = document.createElement("li");
+    const inputObj = document.createElement("input");
+
+    inputObj.classList.add("select-button");
+    inputObj.classList.add("select-character");
+    inputObj.onclick = () => toggleButton(inputObj);
+    inputObj.type = "button";
+    inputObj.value = character.name;
+
+    listObj.appendChild(inputObj);
+    listElement.appendChild(listObj);
+  }
 });
 
 if (document.querySelector(".selected")) {
