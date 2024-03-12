@@ -5,3 +5,13 @@ userInfo.then((data) => {
     element.innerHTML = data.username;
   }
 });
+
+if (document.querySelector(".selected")) {
+  if (document.querySelector(".selected").id !== "add-character") {
+    document.getElementById("character-creator").style.display = "none";
+  } else {
+    document.getElementById("character-creator").style.display = "flex";
+  }
+} else {
+  document.getElementById("character-creator").style.display = "none";
+}
