@@ -33,15 +33,21 @@ addCharacterForm.addEventListener("submit", (event) => {
       race: addCharacterRace,
       diff: addCharacterDiff,
       username: username,
+      password: password,
     }),
   }).then((response) => {
-    response.json().then((data) => {
-      if (data.message !== "Successful Creation") {
-        alert("Failed to create character!");
+    response
+      .json()
+      .then((data) => {
+        if (data.message !== "Successful Creation") {
+          alert("Failed to create character!");
+          window.location.reload();
+          return;
+        }
         window.location.reload();
-        return;
-      }
-      window.location.reload();
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 });

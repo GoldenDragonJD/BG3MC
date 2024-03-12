@@ -118,50 +118,55 @@ app.post("/addCharacter", async (req, res) => {
   const race = req.body.race;
   const diff = req.body.diff;
   const username = req.body.username;
+  const password = req.body.password;
 
-  fs.readFile(__dirname + "/private/list.json", "utf-8", (error, data) => {
-    if (error) {
-      res.send("<script>window.location.reload()</script>");
-      return;
-    }
-    const jsonData = JSON.parse(data);
-    let raceCheck = false;
-    let diffCheck = false;
+  User.findOne({ username: username }).then((user) => {
+    if (password !== sha256(user.password)) return res.redirect("/");
+    fs.readFile(__dirname + "/private/list.json", "utf-8", (error, data) => {
+      if (error) {
+        console.log("am i getting sent here?");
+        res.send("<script>window.location.reload()</script>");
+        return;
+      }
+      const jsonData = JSON.parse(data);
+      let raceCheck = false;
+      let diffCheck = false;
 
-    for (const raceName of jsonData.races) {
-      if (raceName === race) raceCheck = true;
-    }
+      for (const raceName of jsonData.races) {
+        if (raceName === race) raceCheck = true;
+      }
 
-    for (const diffName of jsonData.difficulties) {
-      if (diffName === diff) diffCheck = true;
-    }
+      for (const diffName of jsonData.difficulties) {
+        if (diffName === diff) diffCheck = true;
+      }
 
-    if (!raceCheck || !diffCheck) {
-      res.redirect("/");
-      return;
-    }
+      if (!raceCheck || !diffCheck) {
+        res.redirect("/");
+        return;
+      }
 
-    const newCharacterObj = {
-      name: name,
-      race: race,
-      diff: diff,
-      level: 0,
-      classes: [],
-    };
+      const newCharacterObj = {
+        name: name,
+        race: race,
+        diff: diff,
+        level: 0,
+        classes: [],
+      };
 
-    User.findOneAndUpdate(
-      { username: username },
-      { $set: { [`characters.${name}`]: newCharacterObj } },
-      { new: true }
-    )
-      .then((updatedUser) => {
-        console.log(updatedUser);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      User.findOneAndUpdate(
+        { username: username },
+        { $set: { [`characters.${name}`]: newCharacterObj } },
+        { new: true }
+      )
+        .then((updatedUser) => {
+          console.log(updatedUser);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
 
-    res.json({ message: "Successful Creation" });
+      res.json({ message: "Successful Creation" });
+    });
   });
 });
 const listener = app.listen(process.env.PORT || 3000, () => {
