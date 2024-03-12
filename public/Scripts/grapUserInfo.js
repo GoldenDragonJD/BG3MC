@@ -14,8 +14,3 @@ const userInfo = fetch("/grabAccountInfo", {
     password: password,
   }),
 }).then((response) => response.json().then((data) => data));
-
-console.log(
-  "This is after:",
-  userInfo.then((data) => data)
-);

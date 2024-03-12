@@ -3,9 +3,14 @@
   src: url("/public/Fonts/SHERWOOD.TTF") format("truetype");
 }
 
+:root {
+  --difficulty-color: black;
+}
+
 body {
   background-color: #191918;
   color: #ffa046;
+  cursor: default;
 }
 
 header {
@@ -42,10 +47,10 @@ header > #header-info {
   gap: 10px;
   font-family: "SHERWOOD.TTF", sans-serif;
   font-weight: 300;
-  background-color: rgb(72, 6, 6);
+  background-color: rgb(31, 0, 0);
   border-radius: 10px;
   padding: 10px;
-  border: 4px solid rgb(0, 0, 0);
+  border: 4px solid rgb(98, 0, 0);
   margin: 20px 0;
   margin-right: 5px;
   box-shadow: 0 0 15px 10px rgb(72, 6, 6);
@@ -90,7 +95,7 @@ main > #character-selector {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 100%;
+  height: fit-content;
   align-items: center;
   justify-content: flex-start;
   border: 4px solid black;
@@ -102,6 +107,7 @@ main > #character-selector {
   font-size: 20px;
   padding: 0 5px;
   text-align: center;
+  padding-bottom: 8px;
 }
 
 main > #character-selector > h2 {
@@ -183,8 +189,8 @@ main > #character-selector > ul > li {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  height: 100%;
-  background-color:#0e0e0e;
+  height: fit-content;
+  background-color: #0e0e0e;
   border-radius: 10px;
   border: 4px solid black;
   color: white;
@@ -197,6 +203,17 @@ main > #character-selector > ul > li {
   font-size: 70px;
   width: 80%;
   margin: 20px auto;
+}
+
+#character-creator > form > h4 {
+  font-size: 40px;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: black;
+  color: lime;
+  cursor: default;
 }
 
 #character-creator > .line-break {
@@ -222,7 +239,7 @@ main > #character-selector > ul > li {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 80%;
+  width: 400px;
   height: 150px;
   font-size: 40px;
   border: 2px solid black;
@@ -233,8 +250,8 @@ main > #character-selector > ul > li {
 }
 
 #name-input:focus-within {
-    box-shadow: 0px 0px 50px -10px rgba(50, 205, 50, 0.486);
-    border: 2px solid limegreen;
+  box-shadow: 0px 0px 50px -10px rgba(50, 205, 50, 0.486);
+  border: 2px solid limegreen;
 }
 
 #name-input > label {
@@ -254,14 +271,146 @@ main > #character-selector > ul > li {
   transition: outline border 0.1s ease-in-out;
   border-radius: 10px;
   padding: 3px;
+  cursor: text;
 }
 
 #name-input > input:focus {
-    outline: 1px solid limegreen;
-    border: 2px solid rgb(0, 0, 0);
-    box-shadow: none;
+  outline: 1px solid limegreen;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: none;
 }
 
 #name-input > input::placeholder {
   color: rgba(255, 255, 255, 0.576);
+}
+
+#button-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 100%;
+  font-size: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+#button-list > .race-select-button {
+  all: unset;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#button-list > button:hover {
+  background-color: rgb(31, 27, 0);
+}
+
+#button-list > button > img {
+  width: 100px;
+  height: 100px;
+  margin: 0;
+}
+
+#button-list > button > p {
+  margin: 0;
+}
+
+.selected-race {
+  all: unset;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  cursor: default;
+  border: 5px solid rgb(162, 162, 0);
+  box-shadow: 0px 0px 40px -10px yellow;
+}
+
+#create-character-submit {
+  all: unset;
+  width: 300px;
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 40px;
+}
+
+#create-character-submit:hover {
+  background-color: rgb(31, 127, 31);
+  box-shadow: 0px 0px 40px -10px rgb(0, 255, 0);
+}
+
+.difficulty-select-button {
+  all: unset;
+  width: 200px;
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.4s ease-in-out;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.difficulty-select-button:hover {
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.selected-difficulty-button {
+  all: unset;
+  width: 200px;
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid var(--difficulty-color);
+  box-shadow: 0px 0px 40px -10px var(--difficulty-color);
+  margin-top: 10px;
+}
+
+#difficulty-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+#difficulty-header {
+  font-size: 50px;
+  margin: 0 auto;
+  background-color: black;
+  color: var(--difficulty-color);
+  padding: 20px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--difficulty-color);
+  margin-bottom: 5px;
+  display: none;
+}
+
+#difficulty-description {
+  font-size: 30px;
+  margin: 0 auto;
+  background-color: black;
+  color: var(--difficulty-color);
+  padding: 20px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--difficulty-color);
+  display: none;
 }

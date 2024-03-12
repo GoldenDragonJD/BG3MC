@@ -1,0 +1,15 @@
+{
+  "races": [
+    "Human",
+    "Elf",
+    "Drow",
+    "Half-Elf",
+    "Half-Orc",
+    "Halfling",
+    "Gnome",
+    "Tiefling",
+    "Githyanki",
+    "Dragonborn"
+  ],
+  "difficulties": ["Normal", "Tactician", "Heroic"]
+}

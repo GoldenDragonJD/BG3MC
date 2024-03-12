@@ -5,6 +5,8 @@
     <title>Home Page</title>
     <script src="/public/Scripts/grapUserInfo.js"></script>
     <script src="/public/Scripts/toggleButtons.js"></script>
+    <script src="/public/Scripts/toggleRaceButton.js"></script>
+    <script src="/public/Scripts/toggleDifficultyButton.js"></script>
     <link rel="stylesheet" href="/public/css/homestyle.css" />
   </head>
   <body>
@@ -34,12 +36,12 @@
       <div id="character-creator">
         <h1>CREATE YOUR CHARACTER</h1>
         <div class="line-break"></div>
-        <form>
+        <form id="character-creator-form">
           <div id="name-input">
-            <label for="name-input">Character Name</label>
+            <label for="name-input-field">Character Name</label>
             <input
               type="text"
-              id="name-input"
+              id="name-input-field"
               placeholder="Tav"
               autocomplete="name"
               minlength="1"
@@ -47,9 +49,164 @@
               required
             />
           </div>
+
+          <h3>Select Your Race</h3>
+
+          <h4 id="race-header">Click the Icon</h4>
+
+          <div id="button-list">
+            <button
+              type="button"
+              id="Human"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Human.png" alt="" />
+              <p>Human</p>
+            </button>
+
+            <button
+              type="button"
+              id="Elf"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Elf.png" alt="" />
+              <p>Elf</p>
+            </button>
+
+            <button
+              type="button"
+              id="Drow"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Drow.png" alt="" />
+              <p>Drow</p>
+            </button>
+
+            <button
+              type="button"
+              id="Half-Elf"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Half-Elf.png" alt="" />
+              <p>Half-Elf</p>
+            </button>
+
+            <button
+              type="button"
+              id="Half-Orc"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Half-Orc.png" alt="" />
+              <p>Half-Orc</p>
+            </button>
+
+            <button
+              type="button"
+              id="Halfling"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Halfling.png" alt="" />
+              <p>Halfling</p>
+            </button>
+
+            <button
+              type="button"
+              id="Dwarf"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Dwarf.png" alt="" />
+              <p>Dwarf</p>
+            </button>
+
+            <button
+              type="button"
+              id="Gnome"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Gnome.png" alt="" />
+              <p>Gnome</p>
+            </button>
+
+            <button
+              type="button"
+              id="Tiefling"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Tiefling.png" alt="" />
+              <p>Tiefling</p>
+            </button>
+
+            <button
+              type="button"
+              id="Githyanki"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Githyanki.png" alt="" />
+              <p>Githyanki</p>
+            </button>
+
+            <button
+              type="button"
+              id="Dragonborn"
+              class="race-select-button"
+              onclick="toggleRaceButton(this)"
+            >
+              <img src="/public/Thumbnail/100px-Race_Dragonborn.png" alt="" />
+              <p>Dragonborn</p>
+            </button>
+          </div>
+
+          <div id="difficulty-input">
+            <h2>Select Your Difficulty</h2>
+            <div id="difficulty-info">
+              <h3 id="difficulty-header"></h3>
+              <p id="difficulty-description"></p>
+            </div>
+
+            <div id="difficulty-button-list">
+              <button
+                type="button"
+                id="Normal"
+                class="difficulty-select-button"
+                onclick="toggleDifficultyButton(this)"
+              >
+                Normal
+              </button>
+
+              <button
+                type="button"
+                id="Tactician"
+                class="difficulty-select-button"
+                onclick="toggleDifficultyButton(this)"
+              >
+                Tactician
+              </button>
+
+              <button
+                type="button"
+                id="Heroic"
+                class="difficulty-select-button"
+                onclick="toggleDifficultyButton(this)"
+              >
+                Heroic
+              </button>
+            </div>
+          </div>
+          <input type="submit" id="create-character-submit" value="CREATE" />
         </form>
       </div>
     </main>
     <script src="/public/Scripts/DisplayInfo.js"></script>
+    <script src="/public/Scripts/addCharacter.js"></script>
   </body>
 </html>

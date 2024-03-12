@@ -11,7 +11,7 @@ function toggleButton(button) {
 }
 
 userInfo.then((data) => {
-  if (data.character.length === 0) {
+  if (!data.characters) {
     toggleButton(document.querySelector("#add-character"));
   }
 });
