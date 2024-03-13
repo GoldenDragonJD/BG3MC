@@ -169,6 +169,34 @@ app.post("/addCharacter", async (req, res) => {
     });
   });
 });
+
+app.post("/removeCharacter", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const characterName = req.body.characterName;
+
+  User.findOne({ username: username }).then((user) => {
+    if (sha256(user.password) !== password) {
+      res.redirect("/");
+      console.log("failed password!");
+      return;
+    }
+
+    User.findOneAndUpdate(
+      { username: username },
+      { $unset: { [`characters.${characterName}`]: "" } }
+    )
+      .then((updatedUser) => {
+        console.log(updatedUser);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    res.json({ message: "Successful Deletion." });
+  });
+});
+
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log(listener.address().port);
 });

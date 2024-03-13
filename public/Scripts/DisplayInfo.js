@@ -27,9 +27,12 @@ userInfo.then((data) => {
 if (document.querySelector(".selected")) {
   if (document.querySelector(".selected").id !== "add-character") {
     document.getElementById("character-creator").style.display = "none";
+    document.getElementById("character-display").style.display = "flex";
   } else {
     document.getElementById("character-creator").style.display = "flex";
+    document.getElementById("character-display").style.display = "none";
   }
 } else {
   document.getElementById("character-creator").style.display = "none";
+  document.getElementById("character-display").style.display = "none";
 }

@@ -7,6 +7,7 @@
     <script src="/public/Scripts/toggleButtons.js"></script>
     <script src="/public/Scripts/toggleRaceButton.js"></script>
     <script src="/public/Scripts/toggleDifficultyButton.js"></script>
+    <script src="/public/Scripts/removeCharacter.js"></script>
     <link rel="stylesheet" href="/public/css/homestyle.css" />
   </head>
   <body>
@@ -204,6 +205,11 @@
           </div>
           <input type="submit" id="create-character-submit" value="CREATE" />
         </form>
+      </div>
+
+      <div id="character-display">
+        <h1 id="character-display-header">:Character Name:</h1>
+        <button onclick="deleteButton()">Delete Character</button>
       </div>
     </main>
     <script src="/public/Scripts/DisplayInfo.js"></script>

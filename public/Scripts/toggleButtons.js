@@ -10,8 +10,12 @@ function toggleButton(button) {
   button.classList.add("selected");
   if (button.id === "add-character") {
     document.getElementById("character-creator").style.display = "flex";
+    document.getElementById("character-display").style.display = "none";
   } else {
     document.getElementById("character-creator").style.display = "none";
+    document.getElementById("character-display").style.display = "flex";
+    document.getElementById("character-display-header").innerHTML =
+      button.value;
   }
 }
 
