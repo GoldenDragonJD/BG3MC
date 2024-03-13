@@ -89,6 +89,7 @@ main {
   height: 80%;
   width: 100%;
   gap: 5px;
+  justify-content: center;
 }
 
 main > #character-selector {
