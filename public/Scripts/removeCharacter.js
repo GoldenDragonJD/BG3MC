@@ -6,6 +6,9 @@ function deleteButton() {
   let username = window.location.search.split("=")[1].split("&")[0];
   let password = window.location.search.split("=")[2].split("&")[0];
 
+  username = decodeURIComponent(username);
+  password = decodeURIComponent(password);
+
   fetch("/removeCharacter", {
     method: "POST",
     headers: {

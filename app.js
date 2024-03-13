@@ -176,6 +176,7 @@ app.post("/removeCharacter", (req, res) => {
   const characterName = req.body.characterName;
 
   User.findOne({ username: username }).then((user) => {
+    if (!user) return res.redirect("/");
     if (sha256(user.password) !== password) {
       res.redirect("/");
       console.log("failed password!");
