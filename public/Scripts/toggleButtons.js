@@ -1,6 +1,5 @@
-const { application } = require("express");
-
 function toggleButton(button) {
+  localStorage.setItem("lastVisited", `${button.id}`);
   const buttons = document.querySelectorAll(".select-button");
   buttons.forEach((element) => {
     if (!element.classList.contains("select-character")) {
@@ -19,8 +18,6 @@ function toggleButton(button) {
     document.getElementById("character-display-header").innerHTML =
       button.value;
   }
-
-  window.localStorage.setItem("lastVisited", button.id);
 }
 
 userInfo.then((data) => {

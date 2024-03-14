@@ -18,6 +18,7 @@ userInfo.then((data) => {
     inputObj.onclick = () => toggleButton(inputObj);
     inputObj.type = "button";
     inputObj.value = character.name;
+    inputObj.id = `select-button-${character.name}`;
 
     listObj.appendChild(inputObj);
     listElement.appendChild(listObj);
@@ -37,6 +38,17 @@ if (document.querySelector(".selected")) {
   document.getElementById("character-display").style.display = "none";
 }
 
-if (window.localStorage.length) {
-  
-}
+let delay = 200;
+
+setInterval(() => {
+  if (
+    window.localStorage.getItem("lastVisited") &&
+    window.localStorage.getItem("lastVisited") !== ""
+  ) {
+    const lastVisited = window.localStorage.getItem("lastVisited");
+    const button = document.getElementById(`${lastVisited}`);
+
+    toggleButton(button);
+    delay = 2000;
+  }
+}, delay);
