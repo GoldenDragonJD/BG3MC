@@ -1,5 +1,4 @@
 function toggleButton(button) {
-  localStorage.setItem("lastVisited", `${button.id}`);
   const buttons = document.querySelectorAll(".select-button");
   buttons.forEach((element) => {
     if (!element.classList.contains("select-character")) {
@@ -13,6 +12,7 @@ function toggleButton(button) {
     document.getElementById("character-creator").style.display = "flex";
     document.getElementById("character-display").style.display = "none";
   } else {
+    localStorage.setItem("lastVisited", `${button.id}`);
     document.getElementById("character-creator").style.display = "none";
     document.getElementById("character-display").style.display = "flex";
     document.getElementById("character-display-header").innerHTML =
