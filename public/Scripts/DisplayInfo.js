@@ -38,9 +38,8 @@ if (document.querySelector(".selected")) {
   document.getElementById("character-display").style.display = "none";
 }
 
-let delay = 200;
-
-setInterval(() => {
+setTimeout(() => {
+  console.log("check!");
   if (
     window.localStorage.getItem("lastVisited") &&
     window.localStorage.getItem("lastVisited") !== ""
@@ -49,6 +48,5 @@ setInterval(() => {
     const button = document.getElementById(`${lastVisited}`);
 
     toggleButton(button);
-    delay = 2000;
   }
-}, delay);
+}, 200);
