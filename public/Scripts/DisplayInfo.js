@@ -38,7 +38,9 @@ if (document.querySelector(".selected")) {
   document.getElementById("character-display").style.display = "none";
 }
 
-setTimeout(() => {
+let delay = 200;
+
+const loadButton = setInterval(() => {
   console.log("check!");
   if (
     window.localStorage.getItem("lastVisited") &&
@@ -46,7 +48,7 @@ setTimeout(() => {
   ) {
     const lastVisited = window.localStorage.getItem("lastVisited");
     const button = document.getElementById(`${lastVisited}`);
-
+    if (!button) return (delay += 20);
     toggleButton(button);
   }
-}, 200);
+}, delay);

@@ -1,1 +1,1 @@
-{key: "value"};
+console.log("Roll For Your First Class".toUpperCase())
