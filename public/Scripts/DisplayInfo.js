@@ -37,6 +37,6 @@ if (document.querySelector(".selected")) {
   document.getElementById("character-display").style.display = "none";
 }
 
-if (!window.localStorage.length) {
+if (window.localStorage.length) {
   
 }
