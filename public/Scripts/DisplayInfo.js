@@ -36,3 +36,7 @@ if (document.querySelector(".selected")) {
   document.getElementById("character-creator").style.display = "none";
   document.getElementById("character-display").style.display = "none";
 }
+
+if (!window.localStorage.length) {
+  
+}

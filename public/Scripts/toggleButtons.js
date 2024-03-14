@@ -1,3 +1,5 @@
+const { application } = require("express");
+
 function toggleButton(button) {
   const buttons = document.querySelectorAll(".select-button");
   buttons.forEach((element) => {
@@ -17,6 +19,8 @@ function toggleButton(button) {
     document.getElementById("character-display-header").innerHTML =
       button.value;
   }
+
+  window.localStorage.setItem("lastVisited", button.id);
 }
 
 userInfo.then((data) => {
