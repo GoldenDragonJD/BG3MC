@@ -7,7 +7,7 @@ userInfo.then((data) => {
 
   if (!data.characters) {
     toggleButton(document.querySelector("#add-character"));
-    return;
+    data.characters = {};
   }
 
   const characters = Object.values(data.characters);
