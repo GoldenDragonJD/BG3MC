@@ -7,9 +7,14 @@
     <script src="/public/Scripts/toggleButtons.js"></script>
     <script src="/public/Scripts/toggleRaceButton.js"></script>
     <script src="/public/Scripts/toggleDifficultyButton.js"></script>
-    <script src="/public/Scripts/displayCharacterInfo.js"></script>
     <script src="/public/Scripts/removeCharacter.js"></script>
     <script src="/public/Scripts/startRolling.js"></script>
+    <script src="/public/Scripts/reSpin.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9e454c7d72.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/public/Scripts/displayCharacterInfo.js"></script>
     <link rel="stylesheet" href="/public/css/homestyle.css" />
   </head>
   <body>
@@ -223,6 +228,7 @@
         <h1>ROLL FOR YOUR FIRST CLASS</h1>
         <div id="main-screen">
           <div id="level-display">
+            <h1 id = "difficulty-info-header">:Difficulty:</h1>
             <div id="level-1-container" class="level-container">
               <h2>Level 1</h2>
               <img src="/public/Images/levelPlaceHolder.png" alt="" />
@@ -360,7 +366,11 @@
                 class="available-class"
               />
             </div>
-            <h1 id="character-display-name"></h1>
+            <div id="roll-footer">
+              <h1 id="character-display-name"></h1>
+              <button id="respin-button" onclick="reSpin()">RESPIN</button>
+              <h2 id="character-display-spins">:Spins:</h2>
+            </div>
           </div>
         </div>
       </div>

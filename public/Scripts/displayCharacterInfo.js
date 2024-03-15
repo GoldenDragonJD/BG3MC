@@ -26,5 +26,33 @@ function displayCharacterInfo(characterName) {
         .getElementById(data.characters[characterName].classes[i])
         .classList.remove("available-class");
     }
+
+    if (
+      data.characters[characterName].spins > 0 &&
+      data.characters[characterName].level > 0
+    ) {
+      document.getElementById("respin-button").style.display = "flex";
+      document.getElementById("character-display-spins").innerHTML =
+        data.characters[characterName].spins;
+    } else {
+      document.getElementById("respin-button").style.display = "none";
+      document.getElementById("character-display-spins").style.display = "none";
+    }
+
+    const difficulty = data.characters[characterName].diff;
+
+    document.getElementById("difficulty-info-header").innerHTML = difficulty;
+    if (difficulty === "Normal")
+      document
+        .getElementById("difficulty-info-header")
+        .style.setProperty("--difficulty-color-header", "limegreen");
+    if (difficulty === "Tactician")
+      document
+        .getElementById("difficulty-info-header")
+        .style.setProperty("--difficulty-color-header", "orange");
+    if (difficulty === "Heroic")
+      document
+        .getElementById("difficulty-info-header")
+        .style.setProperty("--difficulty-color-header", "red");
   });
 }

@@ -144,12 +144,18 @@ app.post("/addCharacter", async (req, res) => {
         res.redirect("/");
         return;
       }
+      let spins;
+
+      if (diff === "Heroic") spins = 0;
+      if (diff === "Tactician") spins = 1;
+      if (diff === "Normal") spins = 2;
 
       const newCharacterObj = {
         name: name,
         race: race,
         diff: diff,
         level: 0,
+        spins: spins,
         classes: [],
       };
 
@@ -252,6 +258,44 @@ app.post("/startRolling", (req, res) => {
           message: "Success Roll",
           level: newLevel,
           class: allClasses[choseClass],
+        });
+      });
+    });
+  });
+});
+
+app.post("/respin", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const characterName = req.body.characterName;
+
+  if (!username || !password) return res.redirect("/");
+
+  User.findOne({ username: username }).then((user) => {
+    if (sha256(user.password) !== password) return res.redirect("/");
+    let newSpins = user.characters[characterName].spins - 1;
+
+    if (newSpins < 0) return res.json({ message: "no more spins" });
+    if (user.characters[characterName].level === 0) return res.redirect("/");
+
+    User.findOneAndUpdate(
+      { username: username },
+      {
+        $set: {
+          [`characters.${characterName}.level`]:
+            user.characters[characterName].level - 1,
+        },
+      }
+    ).then(() => {
+      User.findOneAndUpdate(
+        { username: username },
+        { $set: { [`characters.${characterName}.spins`]: newSpins } }
+      ).then(() => {
+        User.findOneAndUpdate(
+          { username: username },
+          { $pop: { [`characters.${characterName}.classes`]: 1 } }
+        ).then(() => {
+          res.json({ message: "Success Respin" });
         });
       });
     });

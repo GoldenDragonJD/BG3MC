@@ -56,6 +56,18 @@ function startRolling(button) {
             document.getElementById("roll-button").style.display = "flex";
             currentClass.classList.add("unavailable-class");
             currentClass.classList.remove("available-class");
+            userInfo.then((info) => {
+              if (info.characters[characterKey].spins > 0) {
+                document.getElementById("respin-button").style.display = "flex";
+                document.getElementById(
+                  "character-display-spins"
+                ).style.display = "flex";
+                document.getElementById("character-display-spins").innerHTML =
+                  info.characters[characterKey].spins;
+              } else {
+                document.getElementById("respin-button").style.display = "none";
+              }
+            });
           }, 4000);
 
           document
