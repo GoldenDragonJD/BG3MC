@@ -41,7 +41,6 @@ if (document.querySelector(".selected")) {
 let delay = 200;
 
 const loadButton = setInterval(() => {
-  console.log("check!");
   if (
     window.localStorage.getItem("lastVisited") &&
     window.localStorage.getItem("lastVisited") !== ""

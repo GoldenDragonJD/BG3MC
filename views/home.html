@@ -9,6 +9,7 @@
     <script src="/public/Scripts/toggleDifficultyButton.js"></script>
     <script src="/public/Scripts/displayCharacterInfo.js"></script>
     <script src="/public/Scripts/removeCharacter.js"></script>
+    <script src="/public/Scripts/startRolling.js"></script>
     <link rel="stylesheet" href="/public/css/homestyle.css" />
   </head>
   <body>
@@ -282,7 +283,84 @@
             </div>
           </div>
           <div id="rolling-class">
-            <button id="roll-button">START CHALLENGE</button>
+            <button id="roll-button" onclick="startRolling(this)">
+              START CHALLENGE
+            </button>
+            <div id="class-display">
+              <img
+                src="/public/Images/Barbarian.png"
+                alt=""
+                id="Barbarian"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Bard.png"
+                alt=""
+                id="Bard"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Cleric.png"
+                alt=""
+                id="Cleric"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Druid.png"
+                alt=""
+                id="Druid"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Fighter.png"
+                alt=""
+                id="Fighter"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Monk.png"
+                alt=""
+                id="Monk"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Paladin.png"
+                alt=""
+                id="Paladin"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Ranger.png"
+                alt=""
+                id="Ranger"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Rogue.png"
+                alt=""
+                id="Rogue"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Sorcerer.png"
+                alt=""
+                id="Sorcerer"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Warlock.png"
+                alt=""
+                id="Warlock"
+                class="available-class"
+              />
+              <img
+                src="/public/Images/Wizard.png"
+                alt=""
+                id="Wizard"
+                class="available-class"
+              />
+            </div>
+            <h1 id="character-display-name"></h1>
           </div>
         </div>
       </div>

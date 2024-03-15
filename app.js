@@ -175,6 +175,8 @@ app.post("/removeCharacter", (req, res) => {
   const password = req.body.password;
   const characterName = req.body.characterName;
 
+  if (!username || !password) return res.redirect("/");
+
   User.findOne({ username: username }).then((user) => {
     if (!user) return res.redirect("/");
     if (sha256(user.password) !== password) {
@@ -195,6 +197,64 @@ app.post("/removeCharacter", (req, res) => {
       });
 
     res.json({ message: "Successful Deletion." });
+  });
+});
+
+app.post("/startRolling", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const characterName = req.body.characterName;
+
+  if (!username || !password) return res.redirect("/");
+
+  User.findOne({ username: username }).then((user) => {
+    if (sha256(user.password) !== password) return res.redirect("/");
+    console.log(user.characters[characterName]);
+
+    let newLevel = user.characters[characterName].level + 1;
+
+    if (newLevel === 13) return res.json({ message: "complete" });
+
+    User.findOneAndUpdate(
+      { username: username },
+      { $set: { [`characters.${characterName}.level`]: newLevel } }
+    ).then(() => {
+      let choseClass = Math.floor(Math.random() * 11);
+
+      const allClasses = [
+        "Barbarian",
+        "Bard",
+        "Druid",
+        "Fighter",
+        "Monk",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorcerer",
+        "Warlock",
+        "Wizard",
+      ];
+      while (
+        user.characters[characterName].classes.includes(allClasses[choseClass])
+      ) {
+        choseClass = Math.floor(Math.random() * 11);
+      }
+
+      User.findOneAndUpdate(
+        { username: username },
+        {
+          $push: {
+            [`characters.${characterName}.classes`]: allClasses[choseClass],
+          },
+        }
+      ).then(() => {
+        res.json({
+          message: "Success Roll",
+          level: newLevel,
+          class: allClasses[choseClass],
+        });
+      });
+    });
   });
 });
 
