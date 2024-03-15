@@ -5,6 +5,11 @@ userInfo.then((data) => {
     element.innerHTML = data.username;
   }
 
+  if (!data.characters) {
+    toggleButton(document.querySelector("#add-character"));
+    return;
+  }
+
   const characters = Object.values(data.characters);
   const listElement = document.getElementById("character-list");
   if (!characters) return;
@@ -37,17 +42,20 @@ if (document.querySelector(".selected")) {
   document.getElementById("character-creator").style.display = "none";
   document.getElementById("character-display").style.display = "none";
 }
-
 let delay = 200;
 
-const loadButton = setInterval(() => {
+const loadButton = setInterval((rounds = 0) => {
   if (
     window.localStorage.getItem("lastVisited") &&
     window.localStorage.getItem("lastVisited") !== ""
   ) {
     const lastVisited = window.localStorage.getItem("lastVisited");
     const button = document.getElementById(`${lastVisited}`);
-    if (!button) return (delay += 20);
+    if (!button) {
+      delay += 20;
+      rounds++;
+      return;
+    }
     toggleButton(button);
   }
 }, delay);
