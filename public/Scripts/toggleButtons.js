@@ -1,5 +1,5 @@
 function toggleButton(button) {
-  if (loadButton) clearInterval(loadButton);
+  if (button.id !== "add-character") clearInterval(loadButton);
   const buttons = document.querySelectorAll(".select-button");
   buttons.forEach((element) => {
     if (!element.classList.contains("select-character")) {
