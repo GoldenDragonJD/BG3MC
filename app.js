@@ -209,7 +209,6 @@ app.post("/startRolling", (req, res) => {
 
   User.findOne({ username: username }).then((user) => {
     if (sha256(user.password) !== password) return res.redirect("/");
-    console.log(user.characters[characterName]);
 
     let newLevel = user.characters[characterName].level + 1;
 
@@ -219,11 +218,12 @@ app.post("/startRolling", (req, res) => {
       { username: username },
       { $set: { [`characters.${characterName}.level`]: newLevel } }
     ).then(() => {
-      let choseClass = Math.floor(Math.random() * 11);
+      let choseClass = Math.floor(Math.random() * 12);
 
       const allClasses = [
         "Barbarian",
         "Bard",
+        "Cleric",
         "Druid",
         "Fighter",
         "Monk",
@@ -237,8 +237,10 @@ app.post("/startRolling", (req, res) => {
       while (
         user.characters[characterName].classes.includes(allClasses[choseClass])
       ) {
-        choseClass = Math.floor(Math.random() * 11);
+        choseClass = Math.floor(Math.random() * 12);
       }
+
+      console.log(allClasses[choseClass]);
 
       User.findOneAndUpdate(
         { username: username },
