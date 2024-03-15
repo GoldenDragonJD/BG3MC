@@ -240,8 +240,6 @@ app.post("/startRolling", (req, res) => {
         choseClass = Math.floor(Math.random() * 12);
       }
 
-      console.log(allClasses[choseClass]);
-
       User.findOneAndUpdate(
         { username: username },
         {
