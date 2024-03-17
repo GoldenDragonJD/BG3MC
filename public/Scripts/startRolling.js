@@ -42,8 +42,6 @@ function startRolling(button) {
         }
 
         const currentClass = availableClasses.shift();
-
-        document.getElementById("audio-player").play();
         document.getElementById("character-display-name").innerHTML =
           currentClass.id;
 
@@ -88,12 +86,13 @@ function startRolling(button) {
         document
           .getElementById(currentClass.id)
           .style.setProperty("--image-border-color", "limegreen");
+        document.getElementById("audio-player").play();
 
         if (currentClass.id === data.class) round++;
-        setTimeout(innerFunc, 375, availableClasses, round);
+        setTimeout(innerFunc, 300, availableClasses, round);
       };
 
-      setTimeout(innerFunc, 375, availableClasses);
+      setTimeout(innerFunc, 300, availableClasses);
     });
   });
 }
