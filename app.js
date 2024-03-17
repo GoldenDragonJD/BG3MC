@@ -144,6 +144,15 @@ app.post("/addCharacter", async (req, res) => {
         res.redirect("/");
         return;
       }
+
+      if (Object.keys(user.characters).includes(name)) {
+        res.json({
+          message:
+            "Character Already Exists! This will be fixed but for now it s what it is.",
+        });
+        return;
+      }
+
       let spins;
 
       if (diff === "Heroic") spins = 0;

@@ -19,6 +19,7 @@ function startRolling(button) {
       if (data.message !== "Success Roll") return alert(data.message);
 
       document.getElementById("roll-button").style.display = "none";
+      document.getElementById("character-selector").style.display = "none";
       document
         .querySelector(`#level-${data.level}-container > h2`)
         .style.setProperty("--level-color", "limegreen");
@@ -42,14 +43,18 @@ function startRolling(button) {
 
         const currentClass = availableClasses.shift();
 
+        document.getElementById("audio-player").play();
         document.getElementById("character-display-name").innerHTML =
           currentClass.id;
 
         if (currentClass.id === data.class && round === totalRounds) {
+          document.getElementById("done-audio").play();
           document
             .getElementById(currentClass.id)
             .style.setProperty("--image-border-color", "limegreen");
           setTimeout(() => {
+            document.getElementById("character-selector").style.display =
+              "flex";
             document
               .getElementById(currentClass.id)
               .style.setProperty("--image-border-color", "#020202");
@@ -85,10 +90,10 @@ function startRolling(button) {
           .style.setProperty("--image-border-color", "limegreen");
 
         if (currentClass.id === data.class) round++;
-        setTimeout(innerFunc, 200, availableClasses, round);
+        setTimeout(innerFunc, 375, availableClasses, round);
       };
 
-      setTimeout(innerFunc, 200, availableClasses);
+      setTimeout(innerFunc, 375, availableClasses);
     });
   });
 }

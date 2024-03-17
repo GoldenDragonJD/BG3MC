@@ -6,7 +6,7 @@ password = decodeURIComponent(password);
 
 // convert unicode to basic string
 
-const userInfo = fetch("/grabAccountInfo", {
+let userInfo = fetch("/grabAccountInfo", {
   method: "POST",
   headers: { "Content-type": "application/json" },
   body: JSON.stringify({
