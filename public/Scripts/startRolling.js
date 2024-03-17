@@ -25,15 +25,20 @@ function startRolling(button) {
         .style.setProperty("--level-color", "limegreen");
       let availableClasses = document.getElementsByClassName("available-class");
 
+      let delay = 80;
       availableClasses = Array.from(availableClasses);
 
-      const totalRounds = Math.floor(Math.random() * 3);
+      if (availableClasses.length < 5) delay = 300;
 
-      for (let i = 0; i <= totalRounds; i++) {
-        availableClasses = availableClasses.concat(availableClasses);
+      let totalRounds = 0;
+      if (availableClasses.length > 1) {
+        totalRounds = Math.floor(Math.random() * 10) + 6;
+        for (let i = 0; i <= totalRounds; i++) {
+          availableClasses = availableClasses.concat(availableClasses);
+        }
       }
 
-      const innerFunc = function (availableClasses, round = 0) {
+      const innerFunc = function (availableClasses, round = totalRounds) {
         if (!availableClasses) return;
 
         let elements = document.getElementsByClassName("available-class");
@@ -45,7 +50,7 @@ function startRolling(button) {
         document.getElementById("character-display-name").innerHTML =
           currentClass.id;
 
-        if (currentClass.id === data.class && round === totalRounds) {
+        if (currentClass.id === data.class && round === 0) {
           document.getElementById("done-audio").play();
           document
             .getElementById(currentClass.id)
@@ -86,13 +91,21 @@ function startRolling(button) {
         document
           .getElementById(currentClass.id)
           .style.setProperty("--image-border-color", "limegreen");
-        document.getElementById("audio-player").play();
+        document.getElementById(`${currentClass.id}-audio-player`).play();
 
-        if (currentClass.id === data.class) round++;
-        setTimeout(innerFunc, 300, availableClasses, round);
+        if (Math.random() < 0.5) {
+          if (round === 2) delay = 400;
+          if (round === 1) delay = 800;
+          if (round === 0) delay = 1000;
+        }
+
+        console.log(delay);
+
+        if (currentClass.id === data.class) round--;
+        setTimeout(innerFunc, delay, availableClasses, round);
       };
 
-      setTimeout(innerFunc, 300, availableClasses);
+      setTimeout(innerFunc, delay, availableClasses);
     });
   });
 }
