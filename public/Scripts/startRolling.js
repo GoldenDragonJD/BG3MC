@@ -94,9 +94,9 @@ function startRolling(button) {
         document.getElementById(`${currentClass.id}-audio-player`).play();
 
         if (Math.random() < 0.5) {
-          if (round === 2) delay = 400;
-          if (round === 1) delay = 800;
-          if (round === 0) delay = 1000;
+          if (round === 2) delay = 200;
+          if (round === 1) delay = 400;
+          if (round === 0) delay = 600;
         }
 
         console.log(delay);
