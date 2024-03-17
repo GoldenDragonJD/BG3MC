@@ -32,7 +32,7 @@ function startRolling(button) {
 
       let totalRounds = 0;
       if (availableClasses.length > 1) {
-        totalRounds = Math.floor(Math.random() * 10) + 6;
+        totalRounds = Math.floor(Math.random() * 8) + 5;
         for (let i = 0; i <= totalRounds; i++) {
           availableClasses = availableClasses.concat(availableClasses);
         }
