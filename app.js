@@ -41,7 +41,7 @@ const User = mongoose.model(
 );
 
 app.use("/public", express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
